@@ -1,0 +1,27 @@
+id: 3bc05faa-47c8-4380-a8ec-5d2a70b749e8
+name: spring-ai-chat
+timestamp: 2024-11-20T21:46:46.661715Z
+source: INTELLIJ
+username: risbergt
+fragments:
+  build-wrapper-maven:
+    name: build-wrapper-maven
+    git:
+      url: https://github.com/vmware-tanzu/application-accelerator-samples
+      subPath: fragments/build-wrapper-maven
+      ref: main
+accelerator:
+  name: spring-ai-chat
+  git:
+    url: https://github.com/vmware-tanzu/application-accelerator-samples.git
+    subPath: spring-ai-chat
+    ref: add-httproute
+options:
+  openaiModel: gpt-3.5-turbo
+  includeBuildToolWrapper: true
+  groupId: com.example
+  aiService: openAI
+  artifactId: spring-ai-chat
+  packageName: com.example.aichat
+  projectName: spring-ai-chat
+  vectorStoreType: simple

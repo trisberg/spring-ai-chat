@@ -1,0 +1,14 @@
+apiVersion: services.tanzu.vmware.com/v1
+kind: ServiceBinding
+metadata:
+    name: vector-47a189
+spec:
+  alias: vector
+  serviceRef:
+    apiGroup: bitnami.database.tanzu.vmware.com
+    kind: PostgreSQLInstance
+    name: vector
+  targetRef:
+    apiGroup: apps.tanzu.vmware.com
+    kind: ContainerApp
+    name: spring-ai-chat
