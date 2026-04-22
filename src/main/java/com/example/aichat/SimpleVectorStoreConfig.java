@@ -10,7 +10,7 @@ public class SimpleVectorStoreConfig {
 
     @Bean
     SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
-        return new SimpleVectorStore(embeddingModel);
+        return SimpleVectorStore.builder(embeddingModel).build();
     }
 
 }
