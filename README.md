@@ -26,7 +26,7 @@ After that it is a good habit to compile the test classes and execute those test
 ./mvnw verify
 ```
 
-## Start and interact
+## Start the app
 Spring Boot has its own integrated Web Server (Apache Tomcat (https://tomcat.apache.org/)).
 
 Set the `AI_API_KEY` environment variable with the API key to be used by your app:
@@ -41,7 +41,44 @@ Launch application using default profile:
 ./mvnw spring-boot:run
 ```
 
-### Accessing home page
+# Use PostgreSQL with pgvector
+
+## Start pgvector instance
+
+```
+docker run --rm -d --name pgvector -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=dataflow pgvector/pgvector:pg17
+```
+
+## Build with pgvector profile
+
+In order to compile the production code:
+
+```sh
+./mvnw clean compile -P pgvector
+```
+
+After that it is a good habit to compile the test classes and execute those tests to see if your application is still behaving as you would expect:
+
+```sh
+./mvnw verify -P pgvector -Dspring.profiles.active=pgvector
+```
+
+## Start the app
+Spring Boot has its own integrated Web Server (Apache Tomcat (https://tomcat.apache.org/)).
+
+Set the `AI_API_KEY` environment variable with the API key to be used by your app:
+
+```sh
+export AI_API_KEY='<your-api-key>'
+```
+
+Launch application using pgvector profile:
+
+```sh
+./mvnw spring-boot:run -P pgvector -Dspring-boot.run.profiles=pgvector
+```
+
+# Accessing home page
 
 You can access the public page at `http://localhost:8080/` by a web browser or using `curl`:
 
